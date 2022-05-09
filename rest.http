@@ -1,11 +1,27 @@
 #------ user  API ------#
 
-### create a user api endpoint
+### get a user api endpoint
+GET  http://localhost:8000/api/v1/users
+
+
+###register user
 POST http://localhost:8000/api/v1/users
 Content-Type: application/json
 
 {
-    "name":"john doe",
+    "name":"john ",
     "email": " jan@doegmail.com",
-    "password":"12345"
+    "password":"123454"
+}
+
+
+###login user
+POST http://localhost:8000/api/v1/users/login
+Content-Type: application/json
+
+{
+     "name":"john ",
+    "email": " jan@doegmail.com",
+    "password":"123454"
+
 }

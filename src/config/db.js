@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const dbConnection = () => {
+export const dbConnection = () => {
   try {
     const conString = "mongodb://localhost:27017/expense_tracker";
     const con = mongoose.connect(conString);
