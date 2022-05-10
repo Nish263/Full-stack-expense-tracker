@@ -24,7 +24,7 @@ export const Login = () => {
     console.log(data);
     if (data.status === "success") {
       const { name, email, _id } = data.user;
-      sessionStorage.setItem("User", JSON.stringify({ name, email, _id }));
+      sessionStorage.setItem("user", JSON.stringify({ name, email, _id }));
       setError("");
       navigate("/dashboard");
       return;
