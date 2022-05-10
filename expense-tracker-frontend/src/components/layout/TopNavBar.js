@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 export const TopNavBar = () => {
   return (
-    <Navbar bg="info" expand="md" className="text-light">
+    <Navbar bg="info" expand="md">
       <Container>
         <Navbar.Brand href="/"> ET</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
