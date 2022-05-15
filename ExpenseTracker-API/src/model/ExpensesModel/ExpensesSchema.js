@@ -1,25 +1,26 @@
 import mongoose from "mongoose";
-const ExpensesSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  amount: {
-    type: Number,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  userId:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"User",
-      required:true,
-  },
-}
+const ExpensesSchema = new mongoose.Schema(
   {
-      timestamps:true,
+    name: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
   }
 );
 

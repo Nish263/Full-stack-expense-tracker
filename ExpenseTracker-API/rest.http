@@ -19,6 +19,7 @@ Content-Type: application/json
 POST http://localhost:8000/api/v1/users/login
 Content-Type: application/json
 
+
 {
      "name":"john ",
     "email": " jan@doegmail.com",
@@ -37,6 +38,7 @@ GET http://localhost:8000/api/v1/expenses
 ###post Expenses
 POST http://localhost:8000/api/v1/expenses
 Content-Type: application/json
+Authorization: 6278e7e6ade86a800ae2bb88
 
 {
     "name":"food",

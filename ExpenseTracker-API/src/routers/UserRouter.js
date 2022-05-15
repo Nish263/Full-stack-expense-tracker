@@ -1,5 +1,5 @@
 import express from "express";
-import { findUser, insertUser } from "../model/User.Model.js";
+import { findUser, insertUser } from "../model/userModel/User.Model.js";
 const router = express.Router();
 
 // router.all("/", (req, res, next) => {
