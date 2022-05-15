@@ -4,19 +4,18 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.json({
-    message: " api get",
+    message: "Welcome to expense API get",
   });
 });
-
 router.post("/", (req, res) => {
   console.log(req.body);
   res.json({
-    message: "post",
+    message: "Welcome to expense API post",
   });
 });
 router.delete("/", (req, res) => {
   res.json({
-    message: "delete",
+    message: "Welcome to expense API delete",
   });
 });
 

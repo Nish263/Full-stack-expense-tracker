@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const ExpensesSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -13,12 +12,15 @@ const ExpensesSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-
-  userId: {
-    type: mongoose.Schema.Types.ObjectedId,
-    ref: "User",
-    required: true,
+  userId:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User",
+      required:true,
   },
-});
-\
+}
+  {
+      timestamps:true,
+  }
+);
+
 export default mongoose.model("Expense", ExpensesSchema);

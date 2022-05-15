@@ -29,20 +29,24 @@ Content-Type: application/json
 
 #expenses api
 
-###
+###get expenses
 GET http://localhost:8000/api/v1/expenses
 
 
 
-###post expenses
+###post Expenses
 POST http://localhost:8000/api/v1/expenses
 Content-Type: application/json
 
 {
-    "name": "",
-    ""
+    "name":"food",
+    "amount":"$100",
+    "date":"2022-04-19"
 }
 
+
+
 ###delete expenses
+
 DELETE http://localhost:8000/api/v1/expenses
 
