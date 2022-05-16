@@ -4,6 +4,8 @@ const userApi = rootUrl + "/users";
 const loginApi = rootUrl + "/users/login";
 const expensesAPI = rootUrl + "/expenses";
 
+// ========user apis==============
+
 export const postRegister = (formData) => {
   try {
     return axios.post(userApi, formData);
@@ -30,9 +32,24 @@ export const postLogin = (formData) => {
   }
 };
 
+// export const postExpense =async FormData =>{
+//   try {
+
+//   } catch (error) {
+
+//   }
+// }
+
+// ==========expense api============
+
 export const postExpense = async (formData) => {
   try {
-    const { data } = await axios.post(expensesAPI, formData);
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const { data } = await axios.post(expensesAPI, formData, {
+      headers: {
+        Authorization: user._id,
+      },
+    });
     return data;
   } catch (error) {
     console.log(error);
@@ -40,6 +57,26 @@ export const postExpense = async (formData) => {
       data: {
         status: "error",
         message: "error.message",
+      },
+    };
+  }
+};
+
+export const getExpense = async () => {
+  try {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const { data } = await axios.get(expensesAPI, {
+      headers: {
+        Authorization: user._id,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+    return {
+      data: {
+        status: "error",
+        message: error.message,
       },
     };
   }
