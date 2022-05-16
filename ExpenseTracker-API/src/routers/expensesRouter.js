@@ -49,19 +49,18 @@ router.post("/:_id", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/:_id", async (req, res) => {
   try {
+    const { _id } = req.params;
     const { autorization } = req.headers;
 
-    const result = await deleteExpense({
-      ...req.body,
-      userId: autorization,
-    });
+    const data = await deleteExpense({ _id, userId: autorization });
+    console.log(data);
 
-    result?._id
+    data?._id
       ? res.json({
           status: "success",
-          message: " expenses deleted  successfully",
+          message: " expenses deleted successfully",
         })
       : res.json({
           status: "error",
