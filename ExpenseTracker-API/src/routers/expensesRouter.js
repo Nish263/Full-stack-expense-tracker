@@ -1,16 +1,28 @@
 import express from "express";
+const router = express.Router();
 import {
   createExpense,
   getExpense,
   deleteExpense,
 } from "../../src/model/expensesModel/Expenses.Model.js";
 
-const router = express.Router();
+router.get("/", async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+    // model get all expenses of userId authorization
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "Welcome to expense API get",
-  });
+    const expenses = await getExpense({ userId: authorization });
+    res.json({
+      status: "success",
+      expenses,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
 });
 
 router.post("/", async (req, res) => {
