@@ -7,12 +7,12 @@ const initialState = {
   date: "",
 };
 export const ExpensesForm = ({ handleOnPost }) => {
-  const { formData, SetFormData } = useState(initialState);
+  const [formData, setFormData] = useState(initialState);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
-    SetFormData({
+    setFormData({
       ...formData,
       [name]: value,
     });
@@ -20,8 +20,9 @@ export const ExpensesForm = ({ handleOnPost }) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    handleOnPost(FormData);
+    handleOnPost(formData);
   };
+  console.log(formData);
   return (
     <div>
       <Form onSubmit={handleOnSubmit}>

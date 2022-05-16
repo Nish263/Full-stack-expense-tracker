@@ -43,6 +43,7 @@ export const postLogin = (formData) => {
 // ==========expense api============
 
 export const postExpense = async (formData) => {
+  console.log(formData);
   try {
     const user = JSON.parse(sessionStorage.getItem("user"));
     const { data } = await axios.post(expensesAPI, formData, {
