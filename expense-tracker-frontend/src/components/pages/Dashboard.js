@@ -39,7 +39,8 @@ export const Dashboard = () => {
   };
 
   const handleOnDelete = async (_id) => {
-    if (!window("Are you sure you want to delete this expense? ")) return;
+    if (!window.confirm("Are you sure you want to delete this expense? "))
+      return;
     const data = await deleteExpense(_id);
     data.status === "success" && fetchExpenses();
     setResp(data);
