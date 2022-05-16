@@ -7,13 +7,17 @@ export const useAuth = async (req, res, next) => {
       // check in the database
       const user = await getUser(authorization);
       console.log(user);
-      user?._id
+      return user?._id
         ? next()
         : res.status(403).json({
             status: "error",
             message: "you ar not authorised to access this resources",
           });
     }
+    res.status(403).json({
+      status: "error",
+      message: "you ar not authorised to access this resources",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
