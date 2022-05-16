@@ -38,6 +38,10 @@ export const Dashboard = () => {
     data.status === "success" && fetchExpenses();
   };
 
+  const handleOnDelete = (_id) => {
+    alert(_id);
+  };
+  console.log(expenses);
   return (
     <MainLayout>
       <h1>Dashboard</h1>

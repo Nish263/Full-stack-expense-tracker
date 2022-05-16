@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
 export const CustomTable = ({ expenses }) => {
   return (
@@ -9,6 +9,10 @@ export const CustomTable = ({ expenses }) => {
           <ListGroupItem ket={i} className="fw-bold">
             <span className="title"> {item.name}</span>
             <span className="amount"> {item.amount}</span>
+            <Button variant="danger">
+              {" "}
+              <i class="fa-solid fa-trash"></i>
+            </Button>
           </ListGroupItem>
         ))}
       </ListGroup>
