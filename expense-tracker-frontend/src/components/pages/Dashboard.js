@@ -14,11 +14,15 @@ export const Dashboard = () => {
     }
   }, [navigate]);
 
+  const handleOnPost = (formData) => {
+    console.log("submit", formData);
+  };
+
   return (
     <MainLayout>
       <h1>Dashboard</h1>
       <hr />
-      <ExpensesForm />
+      <ExpensesForm handleOnPost={handleOnPost} />
       <CustomTable />
     </MainLayout>
   );
