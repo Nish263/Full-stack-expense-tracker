@@ -42,7 +42,7 @@ Authorization: 6278e7e6ade86a800ae2bb88
 
 {
     "name":"food",
-    "amount":"$100",
+    "amount":"100",
     "date":"2022-04-19"
 }
 
