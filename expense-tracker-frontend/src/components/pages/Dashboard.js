@@ -3,7 +3,7 @@ import { MainLayout } from "../layout/MainLayout";
 import { useNavigate } from "react-router-dom";
 import { ExpensesForm } from "../expenses-form/ExpensesForm";
 import { CustomTable } from "../custom-table/CustomTable";
-import { getExpense, postExpense } from "../helper/axiosHelper";
+import { deleteExpense, getExpense, postExpense } from "../helper/axiosHelper";
 import { Alert, Spinner, Row } from "react-bootstrap";
 
 export const Dashboard = () => {
@@ -38,8 +38,11 @@ export const Dashboard = () => {
     data.status === "success" && fetchExpenses();
   };
 
-  const handleOnDelete = (_id) => {
-    alert(_id);
+  const handleOnDelete = async (_id) => {
+    if (!window("Are you sure you want to delete this expense? ")) return;
+    const data = await deleteExpense(_id);
+    data.status === "success" && fetchExpenses();
+    setResp(data);
   };
   console.log(expenses);
   return (
@@ -57,7 +60,7 @@ export const Dashboard = () => {
       </Row>
 
       <ExpensesForm handleOnPost={handleOnPost} />
-      <CustomTable expenses={expenses} />
+      <CustomTable expenses={expenses} handleOnDelete={handleOnDelete} />
     </MainLayout>
   );
 };

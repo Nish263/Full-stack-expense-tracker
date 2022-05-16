@@ -83,22 +83,22 @@ export const getExpense = async () => {
   }
 };
 
-// export const getExpense = async () => {
-//   try {
-//     const user = JSON.parse(sessionStorage.getItem("user"));
-//     const { data } = await axios.get(expensesAPI, {
-//       headers: {
-//         Authorization: user._id,
-//       },
-//     });
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//     return {
-//       data: {
-//         status: "error",
-//         message: error.message,
-//       },
-//     };
-//   }
-// };
+export const deleteExpense = async (_id) => {
+  try {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const { data } = await axios.delete(expensesAPI + "/" + _id, {
+      headers: {
+        Authorization: user._id,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+    return {
+      data: {
+        status: "error",
+        message: error.message,
+      },
+    };
+  }
+};
