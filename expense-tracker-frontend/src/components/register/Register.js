@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import { Row, Form, Button, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { postRegister } from "../helper/axiosHelper";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoadingPending, setResponse } from "./userSlice";
 
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+};
 export const Register = () => {
-  const initialState = {
-    name: "",
-    email: "",
-    password: "",
-  };
+  const dispatch = useDispatch();
+
+  const { res, isLoading } = useSelector((state) => state.user);
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [res, setRes] = useState({});
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [res, setRes] = useState({});
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +29,14 @@ export const Register = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
+    dispatch(setLoadingPending(true));
 
     // call api axios
 
     const { data } = await postRegister(formData);
-    setRes(data);
-    setIsLoading(false);
+    dispatch(setResponse(data));
+    dispatch(setLoadingPending(false));
   };
   return (
     <Row className="login-comp mt-5">

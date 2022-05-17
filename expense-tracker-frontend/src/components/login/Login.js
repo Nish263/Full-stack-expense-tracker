@@ -56,7 +56,7 @@ export const Login = () => {
           Login
         </Button>
         <div className="text-end">
-          New Here ? <Link to=" /register">Register</Link>
+          New Here ? <Link to="/register">Register</Link>
         </div>
       </Form>
     </Row>
