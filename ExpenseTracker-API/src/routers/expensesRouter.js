@@ -3,7 +3,7 @@ const router = express.Router();
 import {
   createExpense,
   getExpense,
-  deleteExpense,
+  deleteManyExpenses,
 } from "../../src/model/expensesModel/Expenses.Model.js";
 
 router.get("/", async (req, res) => {
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/:_id", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { authorization } = req.headers;
 
@@ -49,15 +49,15 @@ router.post("/:_id", async (req, res) => {
   }
 });
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/", async (req, res) => {
   try {
-    const { _id } = req.params;
-    const { autorization } = req.headers;
+    const ids = req.body;
 
-    const data = await deleteExpense({ _id, userId: autorization });
-    console.log(data);
+    const { authorization } = req.headers;
 
-    data?._id
+    const data = await deleteManyExpenses(authorization, ids);
+
+    data?.deletedCount
       ? res.json({
           status: "success",
           message: " expenses deleted successfully",
