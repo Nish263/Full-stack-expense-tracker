@@ -17,12 +17,19 @@ const userslice = createSlice({
       state.isLoading = true;
     },
     setResponse: (state, action) => {
-      state.isLoading = false;
+      //   state.isLoading = false;
       state.res = action.payload;
+    },
+    loginSuccessResponse: (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload;
     },
   },
 });
 
 const { actions, reducer } = userslice;
-export const { setLoadingPending, setResponse } = actions;
+export const {
+  setLoadingPending,
+  setResponse,loginSuccessResponse,
+} = actions;
 export default reducer;

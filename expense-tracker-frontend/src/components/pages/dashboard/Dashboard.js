@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { MainLayout } from "../layout/MainLayout";
+import { MainLayout } from "../../layout/MainLayout";
 import { useNavigate } from "react-router-dom";
-import { ExpensesForm } from "../expenses-form/ExpensesForm";
-import { CustomTable } from "../custom-table/CustomTable";
-import { deleteExpense, getExpense, postExpense } from "../helper/axiosHelper";
+import { ExpensesForm } from "../../expenses-form/ExpensesForm";
+import { CustomTable } from "../../custom-table/CustomTable";
+import {
+  deleteExpense,
+  getExpense,
+  postExpense,
+} from "../../helper/axiosHelper";
 import { Alert, Spinner, Row } from "react-bootstrap";
 
 export const Dashboard = () => {
@@ -14,38 +18,32 @@ export const Dashboard = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     if (!user?._id) {
       navigate("/");
     }
-    fetchExpenses();
+    // fetchExpenses();
   }, [navigate]);
 
-  const fetchExpenses = async () => {
-    const data = await getExpense();
-    console.log(data);
-    data?.status === "success" && setExpenses(data.expenses);
-  };
   const handleOnPost = async (formData) => {
     console.log("submit", formData);
     setIsLoading(true);
     const data = await postExpense(formData);
     setIsLoading(false);
     setResp(data);
-    data.status === "success" && fetchExpenses();
+    // data.status === "success" && fetchExpenses();
   };
 
   const handleOnDelete = async (_id) => {
     if (!window.confirm("Are you sure you want to delete this expense? "))
       return;
     const data = await deleteExpense(_id);
-    data.status === "success" && fetchExpenses();
+    // data.status === "success" && fetchExpenses();
     setResp(data);
   };
-  console.log(expenses);
+
   return (
     <MainLayout>
       <h1>Dashboard</h1>
@@ -61,7 +59,7 @@ export const Dashboard = () => {
       </Row>
 
       <ExpensesForm handleOnPost={handleOnPost} />
-      <CustomTable expenses={expenses} handleOnDelete={handleOnDelete} />
+      <CustomTable handleOnDelete={handleOnDelete} />
     </MainLayout>
   );
 };
