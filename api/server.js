@@ -32,14 +32,10 @@ import ExpensesRouter from "./src/routers/expensesRouter.js.js";
 app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/expenses", ExpensesRouter);
 
-app.use(
-  express.static(path.resolve(__dirname, "./expense-tracker-frontend/build"))
-);
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "./expense-tracker-frontend/build", "index.html")
-  );
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
 app.listen(PORT, (error) => {
