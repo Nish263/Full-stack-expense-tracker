@@ -1,9 +1,16 @@
+import "dotenv/config";
 import express from "express";
 const app = express();
 
 const PORT = process.env.PORT || 8000;
 
 // setup middleware
+
+import path from "path";
+const __dirname = path.resolve();
+console.log(__dirname);
+
+// seti\up middleware
 import cors from "cors";
 import morgan from "morgan";
 
@@ -25,8 +32,14 @@ import ExpensesRouter from "./src/routers/ExpensesRouter.js";
 app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/expenses", ExpensesRouter);
 
+app.use(
+  express.static(path.resolve(__dirname, "./expense-tracker-frontend/build"))
+);
+
 app.get("*", (req, res) => {
-  res.status(404).send("<h1>404 NOT FOUND</h1>");
+  res.sendFile(
+    path.resolve(__dirname, "./expense-tracker-frontend/build", "index.html")
+  );
 });
 
 app.listen(PORT, (error) => {
