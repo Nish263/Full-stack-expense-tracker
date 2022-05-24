@@ -26,8 +26,8 @@ dbConnection();
 // middlewares
 import { useAuth } from "./src/middlewares/authMiddleware.js";
 // api's
-import UserRouter from "./src/routers/UserRouter.js";
-import ExpensesRouter from "./src/routers/ExpensesRouter.js";
+import UserRouter from "./src/routers/userRouter.js";
+import ExpensesRouter from "./src/routers/expensesRouter.js.js";
 
 app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/expenses", ExpensesRouter);
