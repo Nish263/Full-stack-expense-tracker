@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ExpenseTracker-API/server.js",
-    "start": "node ExpenseTracker-API/server.js",
-    "heroku-postbuild": "cd expense-tracker-frontend && npm install && npm run build",
+    "dev": "nodemon api/server.js",
+    "start": "node api/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
